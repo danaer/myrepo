@@ -1,0 +1,15 @@
+{% extends 'maintemplate.html' %}
+
+{% load staticfiles %}
+
+{% block mytemplate %}
+    {% for con in content %}
+
+    <h1><a href="/games/showOne/{{ con.0.id }}">{{ con.0.Video_name }}</a></h1>
+    <iframe width="600" height="360" src={{ con.0.Video_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <i><<h3>{{ con.0.Video_dis }}</h3></i>
+    <h5>{{ con.0.Video_data }}</h5>
+    <h4><img src="{% static 'falloutlike.png' %}" width="50px">{{ con.0.Video_likes }}</h4><hr>
+    {% endfor %}
+{% endblock %}
+
