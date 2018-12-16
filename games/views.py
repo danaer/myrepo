@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from . import form
 from django.template.context_processors import csrf
 from django.contrib import auth
+from time import sleep
 
 from bs4 import BeautifulSoup
 from sqlite3 import connect
@@ -112,6 +113,7 @@ def commentlike(request, comment_id):
     return redirect("/games/showOne/" + str(com.Comment_Video_id) + "/")
 
 def england(request):
+    sleep(3)
     args = {}
     args.update(csrf(request))
     req = requests.get("https://sports.ru/epl/table")
