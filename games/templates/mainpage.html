@@ -1,11 +1,47 @@
 {% extends 'maintemplate.html' %}
-
 {% load staticfiles %}
-
-
 {% block mainpage %}
 
-<center><h1> Сайт боготворения великого Тодда Говарда </h1></center>
+<center><h1> Актуальные турнирные таблицы главных европейских футбольных чемпионатов</h1></center>
 
-<h3><img src="{% static 'eyes.png' %}"  class="mx-auto d-block">  </h3>
+<div id="demo" class="carousel slide" data-ride="carousel" style="black">
+
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'england.png' %}", height="450px", class="mx-auto d-block" alt="England">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'spain.png' %}", height="450px", class="mx-auto d-block" alt="Spain">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'france.png' %}", height="450px", class="mx-auto d-block" alt="France">
+    </div>
+     <div class="carousel-item">
+      <img src="{% static 'germany.png' %}", height="450px", class="mx-auto d-block" alt="Germany">
+    </div>
+     <div class="carousel-item">
+      <img src="{% static 'italy.png' %}", height="450px", class="mx-auto d-block" alt="Italy">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon" ></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
 {% endblock %}

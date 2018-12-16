@@ -6,6 +6,10 @@ from . import form
 from django.template.context_processors import csrf
 from django.contrib import auth
 
+from bs4 import BeautifulSoup
+from sqlite3 import connect
+import requests
+
 User = get_user_model()
 
 def show(request):
@@ -107,6 +111,85 @@ def commentlike(request, comment_id):
     com.save()
     return redirect("/games/showOne/" + str(com.Comment_Video_id) + "/")
 
+def england(request):
+    args = {}
+    args.update(csrf(request))
+    req = requests.get("https://sports.ru/epl/table")
+    soup = BeautifulSoup(req.text)
+    stats = [];    teams = [];    stats1 = []
+    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
+    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    for i in data:
+        if i.isnumeric() == True:
+            stats1.append(i)
+    for i in range(len(stats1)):
+        if i % 8 != 0:
+            stats.append(stats1[i])
+    return render(request, "england.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
+
+def spain(request):
+    args = {}
+    args.update(csrf(request))
+    req = requests.get("https://sports.ru/la-liga/table")
+    soup = BeautifulSoup(req.text)
+    stats = [];    teams = [];    stats1 = []
+    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
+    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    for i in data:
+        if i.isnumeric() == True:
+            stats1.append(i)
+    for i in range(len(stats1)):
+        if i % 8 != 0:
+            stats.append(stats1[i])
+    return render(request, "spain.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
+
+def france(request):
+    args = {}
+    args.update(csrf(request))
+    req = requests.get("https://sports.ru/ligue-1/table")
+    soup = BeautifulSoup(req.text)
+    stats = [];    teams = [];    stats1 = []
+    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
+    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    for i in data:
+        if i.isnumeric() == True:
+            stats1.append(i)
+    for i in range(len(stats1)):
+        if i % 8 != 0:
+            stats.append(stats1[i])
+    return render(request, "france.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
+
+def germany(request):
+    args = {}
+    args.update(csrf(request))
+    req = requests.get("https://sports.ru/bundesliga/table")
+    soup = BeautifulSoup(req.text)
+    stats = [];    teams = [];    stats1 = []
+    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
+    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    for i in data:
+        if i.isnumeric() == True:
+            stats1.append(i)
+    for i in range(len(stats1)):
+        if i % 8 != 0:
+            stats.append(stats1[i])
+    return render(request, "germany.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
+
+def italy(request):
+    args = {}
+    args.update(csrf(request))
+    req = requests.get("https://sports.ru/seria-a/table")
+    soup = BeautifulSoup(req.text)
+    stats = [];    teams = [];    stats1 = []
+    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
+    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    for i in data:
+        if i.isnumeric() == True:
+            stats1.append(i)
+    for i in range(len(stats1)):
+        if i % 8 != 0:
+            stats.append(stats1[i])
+    return render(request, "italy.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
 def bio(request):
     return render(request,"bio.html", {'user':auth.get_user(request).username} )
 

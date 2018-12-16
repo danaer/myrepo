@@ -13,5 +13,10 @@ urlpatterns = [
     re_path('videolike/ajax/',views.ajax),
     #re_path('commentlike/ajaxcom/',views.ajaxcom),
     re_path('bio/',views.bio),
+    re_path('england/',views.england),
+    re_path('spain/',views.spain),
+    re_path('france/',views.france),
+    re_path('germany/',views.germany),
+    re_path('italy/', views.italy),
     re_path('',views.mainpage)
 ]
