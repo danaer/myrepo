@@ -115,6 +115,7 @@ def commentlike(request, comment_id):
 def england(request):
     args = {}
     args.update(csrf(request))
+    sleep(2)
     while True:
         try:
             req = requests.get("https://sports.ru/epl/table")
@@ -137,6 +138,7 @@ def england(request):
 def spain(request):
     args = {}
     args.update(csrf(request))
+    sleep(2)
     while True:
         try:
             req = requests.get("https://sports.ru/la-liga/table")
@@ -159,6 +161,7 @@ def spain(request):
 def france(request):
     args = {}
     args.update(csrf(request))
+    sleep(2)
     while True:
         try:
             req = requests.get("https://sports.ru/ligue-1/table")
@@ -181,6 +184,7 @@ def france(request):
 def germany(request):
     args = {}
     args.update(csrf(request))
+    sleep(2)
     while True:
         try:
             req = requests.get("https://sports.ru/bundesliga/table")
@@ -203,6 +207,7 @@ def germany(request):
 def italy(request):
     args = {}
     args.update(csrf(request))
+    sleep(2)
     while True:
         try:
             req = requests.get("https://sports.ru/seria-a/table")
