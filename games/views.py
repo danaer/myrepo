@@ -137,7 +137,13 @@ def england(request):
 def spain(request):
     args = {}
     args.update(csrf(request))
-    req = requests.get("https://sports.ru/la-liga/table")
+    while True:
+        try:
+            req = requests.get("https://sports.ru/la-liga/table")
+            break
+        except:
+            sleep(5)
+            continue
     soup = BeautifulSoup(req.text)
     stats = [];    teams = [];    stats1 = []
     teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
@@ -153,7 +159,13 @@ def spain(request):
 def france(request):
     args = {}
     args.update(csrf(request))
-    req = requests.get("https://sports.ru/ligue-1/table")
+    while True:
+        try:
+            req = requests.get("https://sports.ru/ligue-1/table")
+            break
+        except:
+            sleep(5)
+            continue
     soup = BeautifulSoup(req.text)
     stats = [];    teams = [];    stats1 = []
     teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
@@ -169,7 +181,13 @@ def france(request):
 def germany(request):
     args = {}
     args.update(csrf(request))
-    req = requests.get("https://sports.ru/bundesliga/table")
+    while True:
+        try:
+            req = requests.get("https://sports.ru/bundesliga/table")
+            break
+        except:
+            sleep(5)
+            continue
     soup = BeautifulSoup(req.text)
     stats = [];    teams = [];    stats1 = []
     teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
@@ -185,7 +203,13 @@ def germany(request):
 def italy(request):
     args = {}
     args.update(csrf(request))
-    req = requests.get("https://sports.ru/seria-a/table")
+    while True:
+        try:
+            req = requests.get("https://sports.ru/seria-a/table")
+            break
+        except:
+            sleep(5)
+            continue
     soup = BeautifulSoup(req.text)
     stats = [];    teams = [];    stats1 = []
     teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
