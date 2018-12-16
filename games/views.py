@@ -113,10 +113,15 @@ def commentlike(request, comment_id):
     return redirect("/games/showOne/" + str(com.Comment_Video_id) + "/")
 
 def england(request):
-    sleep(3)
     args = {}
     args.update(csrf(request))
-    req = requests.get("https://sports.ru/epl/table")
+    while True:
+        try:
+            req = requests.get("https://sports.ru/epl/table")
+            break
+        except:
+            sleep(5)
+            continue
     soup = BeautifulSoup(req.text)
     stats = [];    teams = [];    stats1 = []
     teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
