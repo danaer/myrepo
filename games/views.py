@@ -116,13 +116,7 @@ def england(request):
     args = {}
     args.update(csrf(request))
     sleep(1)
-    while True:
-        try:
-            req = requests.get("https://sports.ru/epl/table")
-            break
-        except:
-            sleep(1)
-            continue
+    req = requests.get("https://sports.ru/epl/table")
     soup = BeautifulSoup(req.text)
     stats = [];    teams = [];    stats1 = []
     teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
