@@ -115,13 +115,13 @@ def commentlike(request, comment_id):
 def england(request):
     args = {}
     args.update(csrf(request))
-    sleep(2)
+    sleep(1)
     while True:
         try:
             req = requests.get("https://sports.ru/epl/table")
             break
         except:
-            sleep(5)
+            sleep(1)
             continue
     soup = BeautifulSoup(req.text)
     stats = [];    teams = [];    stats1 = []
@@ -138,10 +138,11 @@ def england(request):
 def spain(request):
     args = {}
     args.update(csrf(request))
-    sleep(2)
+
     while True:
         try:
-            req = requests.get("https://sports.ru/la-liga/table")
+            pass
+            #req = requests.get("https://sports.ru/la-liga/table")
             break
         except:
             sleep(5)
@@ -161,10 +162,11 @@ def spain(request):
 def france(request):
     args = {}
     args.update(csrf(request))
-    sleep(2)
+
     while True:
         try:
-            req = requests.get("https://sports.ru/ligue-1/table")
+            pass
+            #req = requests.get("https://sports.ru/ligue-1/table")
             break
         except:
             sleep(5)
@@ -184,10 +186,11 @@ def france(request):
 def germany(request):
     args = {}
     args.update(csrf(request))
-    sleep(2)
+
     while True:
         try:
-            req = requests.get("https://sports.ru/bundesliga/table")
+            pass
+            #req = requests.get("https://sports.ru/bundesliga/table")
             break
         except:
             sleep(5)
@@ -207,10 +210,11 @@ def germany(request):
 def italy(request):
     args = {}
     args.update(csrf(request))
-    sleep(2)
+
     while True:
         try:
-            req = requests.get("https://sports.ru/seria-a/table")
+            pass
+            #req = requests.get("https://sports.ru/seria-a/table")
             break
         except:
             sleep(5)
