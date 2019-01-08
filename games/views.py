@@ -115,113 +115,127 @@ def commentlike(request, comment_id):
 def england(request):
     args = {}
     args.update(csrf(request))
-    sleep(1)
-    req = requests.get("https://sports.ru/epl/table")
+    req = requests.get("https://www.championat.com/football/_england/tournament/2613/table/")
     soup = BeautifulSoup(req.text)
-    stats = [];    teams = [];    stats1 = []
-    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
-    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    stats = [];    teams = [];    stats1 = []; teams1 = []
+    a = 0
+    teams1.extend([i.text for i in soup.find_all("", {"class": "result-table__item"})])
+    for i in teams1:
+        teams.append(i.replace('\n', ''))
+        a += 1
+        if (a > 20):
+            break
+    data = soup.find("table", {"class": "result-table table table-stripe table-row-hover _no-stretch"}).text.replace(
+        "\n", " ").split()
     for i in data:
         if i.isnumeric() == True:
             stats1.append(i)
     for i in range(len(stats1)):
-        if i % 8 != 0:
+        if i % 6 != 0:
             stats.append(stats1[i])
     return render(request, "england.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
 
 def spain(request):
     args = {}
     args.update(csrf(request))
-
-    while True:
-        try:
-            pass
-            #req = requests.get("https://sports.ru/la-liga/table")
-            break
-        except:
-            sleep(5)
-            continue
+    req = requests.get("https://www.championat.com/football/_spain/tournament/2625/table/")
     soup = BeautifulSoup(req.text)
-    stats = [];    teams = [];    stats1 = []
-    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
-    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    stats = [];
+    teams = [];
+    stats1 = [];
+    teams1 = []
+    a = 0
+    teams1.extend([i.text for i in soup.find_all("", {"class": "result-table__item"})])
+    for i in teams1:
+        teams.append(i.replace('\n', ''))
+        a += 1
+        if (a > 20):
+            break
+    data = soup.find("table", {"class": "result-table table table-stripe table-row-hover _no-stretch"}).text.replace(
+        "\n", " ").split()
     for i in data:
         if i.isnumeric() == True:
             stats1.append(i)
     for i in range(len(stats1)):
-        if i % 8 != 0:
+        if i % 6 != 0:
             stats.append(stats1[i])
     return render(request, "spain.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
 
 def france(request):
     args = {}
     args.update(csrf(request))
-
-    while True:
-        try:
-            pass
-            #req = requests.get("https://sports.ru/ligue-1/table")
-            break
-        except:
-            sleep(5)
-            continue
+    req = requests.get("https://www.championat.com/football/_france/tournament/2617/table/")
     soup = BeautifulSoup(req.text)
-    stats = [];    teams = [];    stats1 = []
-    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
-    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    stats = [];
+    teams = [];
+    stats1 = [];
+    teams1 = []
+    a = 0
+    teams1.extend([i.text for i in soup.find_all("", {"class": "result-table__item"})])
+    for i in teams1:
+        teams.append(i.replace('\n', ''))
+        a += 1
+        if (a > 20):
+            break
+    data = soup.find("table", {"class": "result-table table table-stripe table-row-hover _no-stretch"}).text.replace(
+        "\n", " ").split()
     for i in data:
         if i.isnumeric() == True:
             stats1.append(i)
     for i in range(len(stats1)):
-        if i % 8 != 0:
+        if i % 6 != 0:
             stats.append(stats1[i])
     return render(request, "france.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
 
 def germany(request):
     args = {}
     args.update(csrf(request))
-
-    while True:
-        try:
-            pass
-            #req = requests.get("https://sports.ru/bundesliga/table")
-            break
-        except:
-            sleep(5)
-            continue
+    req = requests.get("https://www.championat.com/football/_germany/tournament/2621/table/")
     soup = BeautifulSoup(req.text)
-    stats = [];    teams = [];    stats1 = []
-    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
-    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    stats = [];
+    teams = [];
+    stats1 = [];
+    teams1 = []
+    a = 0
+    teams1.extend([i.text for i in soup.find_all("", {"class": "result-table__item"})])
+    for i in teams1:
+        teams.append(i.replace('\n', ''))
+        a += 1
+        if (a > 20):
+            break
+    data = soup.find("table", {"class": "result-table table table-stripe table-row-hover _no-stretch"}).text.replace(
+        "\n", " ").split()
     for i in data:
         if i.isnumeric() == True:
             stats1.append(i)
     for i in range(len(stats1)):
-        if i % 8 != 0:
+        if i % 6 != 0:
             stats.append(stats1[i])
     return render(request, "germany.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
 
 def italy(request):
     args = {}
     args.update(csrf(request))
-
-    while True:
-        try:
-            pass
-            #req = requests.get("https://sports.ru/seria-a/table")
-            break
-        except:
-            sleep(5)
-            continue
+    req = requests.get("https://www.championat.com/football/_italy/tournament/2629/table/")
     soup = BeautifulSoup(req.text)
-    stats = [];    teams = [];    stats1 = []
-    teams.extend([i.text for i in soup.find_all("", {"class": "name"})])
-    data = soup.find("div", {"class": "stat mB6"}).text.replace("\n", " ").split()
+    stats = [];
+    teams = [];
+    stats1 = [];
+    teams1 = []
+    a = 0
+    teams1.extend([i.text for i in soup.find_all("", {"class": "result-table__item"})])
+    for i in teams1:
+        teams.append(i.replace('\n', ''))
+        a += 1
+        if (a > 20):
+            break
+    data = soup.find("table", {"class": "result-table table table-stripe table-row-hover _no-stretch"}).text.replace(
+        "\n", " ").split()
     for i in data:
         if i.isnumeric() == True:
             stats1.append(i)
     for i in range(len(stats1)):
-        if i % 8 != 0:
+        if i % 6 != 0:
             stats.append(stats1[i])
     return render(request, "italy.html", {'user': auth.get_user(request).username, 'teams':teams,'stats':stats})
 def bio(request):
